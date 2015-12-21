@@ -27,11 +27,10 @@
     "jscs": "jscs ."
   },
   "dependencies": {
-    "baobab": "^2.1.1",
-    "cerebral": "^0.25.1",
-    "cerebral-addons": "^0.1.2",
-    "cerebral-baobab": "^0.4.2",
-    "cerebral-react": "^0.6.0",
+    "cerebral": "^0.26.1",
+    "cerebral-baobab": "^0.4.3",
+    "cerebral-react": "^0.8.0",
+    "cerebral-router": "^0.8.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
   },
