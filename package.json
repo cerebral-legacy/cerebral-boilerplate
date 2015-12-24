@@ -27,6 +27,7 @@
     "jscs": "jscs ."
   },
   "dependencies": {
+    "baobab": "^2.2.1",
     "cerebral": "^0.26.1",
     "cerebral-addons": "^0.1.3",
     "cerebral-baobab": "^0.4.3",
