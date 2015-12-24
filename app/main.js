@@ -7,15 +7,14 @@ import {Container} from 'cerebral-react';
 import Home from './modules/Home';
 import homeSignals from './modules/Home/signals';
 
-controller.signal('homeRouted', [Router.redirect('/red')]);
-
 homeSignals(controller);
 
 Router(controller, {
-  '/': 'homeRouted',
-  '/:color': 'colorChanged'
+  '/': 'colorChanged'
 }, {
-  onlyHash: true
+  mapper: {
+    query: true
+  }
 });
 
 ReactDOM.render(<Container controller={controller}><Home /></Container>, document.getElementById('root'));
