@@ -1,5 +1,5 @@
 import React from 'react';
-import {Decorator as Cerebral} from 'cerebral-react';
+import {Decorator as Cerebral, Link} from 'cerebral-react';
 import Title from './components/Title';
 
 @Cerebral({
@@ -11,9 +11,9 @@ class App extends React.Component {
     return (
       <div>
         <Title color={this.props.color}>{this.props.title}</Title>
-        <button onClick={() => this.props.signals.colorChanged({color: 'red'})}>Red</button>
+        <Link signal="colorChanged" params={{color: 'red'}}>Red</Link>
         {' | '}
-        <button onClick={() => this.props.signals.colorChanged({color: 'blue'})}>Blue</button>
+        <Link signal="colorChanged" params={{color: 'blue'}}>Blue</Link>
       </div>
     );
   }
