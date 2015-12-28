@@ -3,11 +3,6 @@ import getFalcorTodos from '../actions/getFalcorTodos';
 import inputToState from 'cerebral-addons/inputToState';
 
 export default [
-  syncTodos,
-  [
-    getFalcorTodos, {
-      success: [inputToState('todos', ['falcorTodos'])],
-      error: []
-    }
-  ]
+  // syncTodos,
+  [getFalcorTodos, {success: [], error: []}]
 ];

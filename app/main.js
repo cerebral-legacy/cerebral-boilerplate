@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from 'cerebral-router';
-import controller from './controller';
+import {controller, model} from './controller';
 import {Container} from 'cerebral-react';
 
 import Home from './modules/Home';
@@ -19,7 +19,8 @@ controller.extends({
     url: 'https://glowing-fire-4534.firebaseio.com'
   }),
   falcor: FalcorModule({
-    source: '/model.json'
+    source: '/model.json',
+    model: model
   }),
   UI: UIModule
 });

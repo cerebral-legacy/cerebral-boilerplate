@@ -7,7 +7,7 @@ import Input from '../UI/Input';
   title: ['title'],
   color: ['color'],
   todos: ['todos'],
-  falcorTodos: ['falcorTodos']
+  // falcorTodos: ['falcorTodos']
 })
 class App extends React.Component {
   componentDidMount() {
@@ -22,13 +22,15 @@ class App extends React.Component {
         <button onClick={() => signals.colorChanged({color: 'red'})}>Red</button>
         {' | '}
         <button onClick={() => signals.colorChanged({color: 'blue'})}>Blue</button>
+        {/*
         <h3>Firebase</h3>
         <ul>
           {this.props.todos.map(todo => <li>{todo.title}</li>)}
         </ul>
+        */}
         <h3>Falcor</h3>
         <ul>
-          {Object.keys(this.props.falcorTodos).map(id => <li>{this.props.falcorTodos[id].title}</li>)}
+          {Object.keys(this.props.todos).map(id => <li>{this.props.todos[id].title}</li>)}
         </ul>
         <h3>Input</h3>
         <Input path={['inputValue']}/>
