@@ -5,15 +5,26 @@ import controller from './controller';
 import {Container} from 'cerebral-react';
 
 import Home from './modules/Home';
-import homeSignals from './modules/Home/signals';
+import HomeModule from './modules/Home/module';
+
+import FirebaseModule from './modules/Firebase/module';
+import FalcorModule from './modules/Falcor/module';
 
 controller.signal('homeRouted', [Router.redirect('/red')]);
 
-homeSignals(controller);
+controller.extends({
+  home: HomeModule,
+  firebase: FirebaseModule({
+    url: 'https://glowing-fire-4534.firebaseio.com'
+  }),
+  falcor: FalcorModule({
+    source: '/model.json'
+  })
+});
 
 Router(controller, {
   '/': 'homeRouted',
-  '/:color': 'colorChanged'
+  '/:color': 'home.colorChanged'
 }, {
   onlyHash: true
 });
