@@ -6,7 +6,9 @@ const model = Model({
   color: '#333',
   todos: [],
   falcorTodos: {},
-  inputValue: 'test'
+  input: {
+    value: 'test'
+  }
 });
 
 export default Controller(model);

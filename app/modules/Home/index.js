@@ -31,7 +31,7 @@ class App extends React.Component {
           {Object.keys(this.props.falcorTodos).map(id => <li>{this.props.falcorTodos[id].title}</li>)}
         </ul>
         <h3>Input</h3>
-        <Input path={['inputValue']}/>
+        <Input path={['input']} validations="isEmail" validationError="Not a valid email!"/>
       </div>
     );
   }
