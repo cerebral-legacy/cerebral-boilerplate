@@ -5,7 +5,8 @@ const model = Model({
   title: 'You can change the url too!',
   color: '#333',
   todos: [],
-  falcorTodos: {}
+  falcorTodos: {},
+  inputValue: 'test'
 });
 
 export default Controller(model);

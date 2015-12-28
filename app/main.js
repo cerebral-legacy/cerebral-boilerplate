@@ -9,6 +9,7 @@ import HomeModule from './modules/Home/module';
 
 import FirebaseModule from './modules/Firebase/module';
 import FalcorModule from './modules/Falcor/module';
+import UIModule from './modules/UI/module';
 
 controller.signal('homeRouted', [Router.redirect('/red')]);
 
@@ -19,7 +20,8 @@ controller.extends({
   }),
   falcor: FalcorModule({
     source: '/model.json'
-  })
+  }),
+  UI: UIModule
 });
 
 Router(controller, {

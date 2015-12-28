@@ -1,6 +1,7 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-react';
 import Title from './components/Title';
+import Input from '../UI/Input';
 
 @Cerebral({
   title: ['title'],
@@ -29,6 +30,8 @@ class App extends React.Component {
         <ul>
           {Object.keys(this.props.falcorTodos).map(id => <li>{this.props.falcorTodos[id].title}</li>)}
         </ul>
+        <h3>Input</h3>
+        <Input path={['inputValue']}/>
       </div>
     );
   }
