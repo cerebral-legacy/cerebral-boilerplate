@@ -1,9 +1,9 @@
 import falcor from 'falcor';
 import HttpDataSource from 'falcor-http-datasource';
-import expandCache from 'falcor-expand-cache';
-import diff from 'deep-diff';
+import _expandCache from 'falcor-expand-cache';
+import _diff from 'deep-diff';
 
-export default function (options) {
+export default function(options, expandCache=_expandCache, diff=_diff) {
   const model = options.model;
 
   const falcorModel = new falcor.Model({
@@ -13,12 +13,7 @@ export default function (options) {
   falcorModel._root.onChange = function() {
     const falcorCache   = expandCache(falcorModel.getCache());
     const falcorChanges = diff(model.tree.get(), falcorCache);
-    debugger
-    falcorChanges.forEach((change) => {
-      if (falcorCache[change.path[0]]) {
-        model.tree.set(change.path, change.rhs)
-      }
-    });
+    falcorChanges.forEach(change => model.tree.set(change.path, change.rhs));
   }
 
   return {

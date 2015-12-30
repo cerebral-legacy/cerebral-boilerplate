@@ -14,7 +14,7 @@ const falcorExpress = require('falcor-express');
 const Router        = require('falcor-router');
 const bodyParser    = require('body-parser');
 const _             = require('underscore');
-let data            = {
+let data = {
   usersById: {
     '1': {
       first_name: 'Bob',
@@ -38,8 +38,6 @@ let data            = {
       // user: { $type: 'ref', value: ['usersById', 2] }
     }
   },
-
-  names: [],
 
   todos: [
     { $type: 'ref', value: ['todosById', 1] },

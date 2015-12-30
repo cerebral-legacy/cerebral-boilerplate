@@ -7,7 +7,7 @@ import Input from '../UI/Input';
   title: ['title'],
   color: ['color'],
   todos: ['todos'],
-  // falcorTodos: ['falcorTodos']
+  // falcorTodos: ['falcor','todos']
 })
 class App extends React.Component {
   componentDidMount() {
