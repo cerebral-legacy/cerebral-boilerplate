@@ -28,10 +28,10 @@
   },
   "dependencies": {
     "baobab": "^2.2.1",
-    "cerebral": "github:cerebral/cerebral#master",
-    "cerebral-addons": "github:cerebral/cerebral-addons",
+    "cerebral": "^0.28.0",
+    "cerebral-addons": "^0.2.0",
     "cerebral-baobab": "^0.4.3",
-    "cerebral-react": "github:cerebral/cerebral-react",
+    "cerebral-react": "^0.9.0",
     "cerebral-router": "^0.8.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
