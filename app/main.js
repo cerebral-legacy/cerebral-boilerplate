@@ -6,7 +6,7 @@ import {Container} from 'cerebral-react';
 
 import home from './modules/Home';
 
-const modules = controller.extends({
+const modules = controller.register({
   home
 });
 
