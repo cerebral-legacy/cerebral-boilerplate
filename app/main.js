@@ -4,13 +4,17 @@ import Router from 'cerebral-router';
 import controller from './controller';
 import {Container} from 'cerebral-react';
 
-import Home from './modules/Home';
-import homeSignals from './modules/Home/signals';
+import home from './modules/Home';
 
-homeSignals(controller);
+const modules = controller.register({
+  home
+});
+
+// get the home component
+const { home: { Component: Home } } = modules;
 
 Router(controller, {
-  '/': 'colorChanged'
+  '/': 'home.colorChanged'
 }, {
   mapper: {
     query: true

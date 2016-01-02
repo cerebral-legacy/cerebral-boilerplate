@@ -1,22 +1,14 @@
-import React from 'react';
-import {Decorator as Cerebral, Link} from 'cerebral-react';
-import Title from './components/Title';
+import Component from './components';
+import colorChanged from './signals/colorChanged';
 
-@Cerebral({
-  title: ['title'],
-  color: ['color']
-})
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Title color={this.props.color}>{this.props.title}</Title>
-        <Link signal="colorChanged" params={{color: 'red'}}>Red</Link>
-        {' | '}
-        <Link signal="colorChanged" params={{color: 'blue'}}>Blue</Link>
-      </div>
-    );
-  }
-}
-
-export default App;
+export default {
+  init({ controller, name }) {
+    return {
+      Component: Component(controller.modules[name])
+    };
+  },
+  signals: {
+    colorChanged
+  },
+  services: {}
+};
