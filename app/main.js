@@ -4,18 +4,21 @@ import Router from 'cerebral-router';
 import controller from './controller';
 import {Container} from 'cerebral-react';
 
-import home from './modules/Home';
+import homeSignals from './modules/Home/signals';
+import Home from './modules/Home';
 
-const modules = controller.register({
-  home
-});
+const redirectToDefaultColor = ({services}) => {
+  services.router.redirect('/blue');
+}
 
-// get the home component
-const { home: { Component: Home } } = modules;
+controller.signal('rootRouted', [redirectToDefaultColor]);
+homeSignals(controller);
 
 Router(controller, {
-  '/': 'home.colorChanged'
+  '/': 'rootRouted',
+  '/:color': 'colorChanged'
 }, {
+  onlyHash: true,
   mapper: {
     query: true
   }
