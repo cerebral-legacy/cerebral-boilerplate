@@ -20,19 +20,16 @@
   },
   "homepage": "https://github.com/cerebral/cerebral-boilerplate",
   "scripts": {
-    "test": "",
-    "start": "babel-node server",
-    "build": "rimraf dist && NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
-    "eslint": "eslint .",
-    "jscs": "jscs ."
+    "start": "node server",
+    "build": "rimraf dist && NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors"
   },
   "dependencies": {
     "baobab": "^2.2.1",
     "cerebral": "^0.30.0",
     "cerebral-addons": "^0.2.0",
     "cerebral-model-baobab": "^0.4.5",
+    "cerebral-module-router": "^0.10.0",
     "cerebral-view-react": "^0.10.0",
-    "cerebral-router": "^0.9.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
   },
