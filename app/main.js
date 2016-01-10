@@ -1,22 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from 'cerebral-router';
-import controller from './controller';
-import {Container} from 'cerebral-react';
+import Controller from 'cerebral';
+import Model from 'cerebral-model-baobab';
+import {Container} from 'cerebral-view-react';
+import Example from './modules/Example';
+import ColorChanger from './modules/Example/components/ColorChanger';
 
-import homeSignals from './modules/Home/signals';
-import Home from './modules/Home';
+const controller = Controller(Model({}));
 
-const redirectToDefaultColor = ({services}) => {
-  services.router.redirect('/blue');
-}
-
-controller.signal('rootRouted', [redirectToDefaultColor]);
-homeSignals(controller);
+controller.modules({
+  example: Example()
+});
 
 Router(controller, {
-  '/': 'rootRouted',
-  '/:color': 'colorChanged'
+  '/': 'example.rootRouted',
+  '/:color': 'example.colorChanged'
 }, {
   onlyHash: true,
   mapper: {
@@ -24,4 +23,4 @@ Router(controller, {
   }
 });
 
-ReactDOM.render(<Container controller={controller}><Home /></Container>, document.getElementById('root'));
+ReactDOM.render(<Container controller={controller}><ColorChanger /></Container>, document.getElementById('root'));
