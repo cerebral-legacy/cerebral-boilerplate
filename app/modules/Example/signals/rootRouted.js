@@ -1,4 +1,4 @@
-import Router from 'cerebral-router';
+import Router from 'cerebral-module-router';
 
 export default [
   Router.redirect('/green')
