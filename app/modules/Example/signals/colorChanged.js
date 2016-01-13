@@ -1,5 +1,5 @@
-import inputToState from 'cerebral-addons/inputToState';
+import copy from 'cerebral-addons/copy';
 
 export default [
-  inputToState(['color'], ['example', 'color'])
+  copy('input:/color', 'state://./color')
 ];
