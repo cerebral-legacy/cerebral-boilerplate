@@ -24,14 +24,14 @@
     "build": "rimraf dist && NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors"
   },
   "dependencies": {
-    "baobab": "^2.2.1",
-    "cerebral": "^0.30.0",
-    "cerebral-addons": "^0.2.0",
+    "baobab": "^2.3.0",
+    "cerebral": "^0.31.0",
+    "cerebral-addons": "^0.2.3",
     "cerebral-model-baobab": "^0.4.5",
-    "cerebral-module-router": "^0.10.0",
-    "cerebral-view-react": "^0.10.0",
+    "cerebral-module-router": "^0.10.1",
+    "cerebral-view-react": "^0.10.2",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3"
+    "react-dom": "^0.14.6"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
