@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Decorator as Cerebral, Link } from 'cerebral-view-react';
-import Title from '../Title';
+import Title from './Title';
 
 @Cerebral({
   title: ['example', 'title'],

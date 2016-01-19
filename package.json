@@ -26,7 +26,7 @@
   "dependencies": {
     "baobab": "^2.2.1",
     "cerebral": "^0.30.0",
-    "cerebral-addons": "^0.2.0",
+    "cerebral-addons": "^0.3.1",
     "cerebral-model-baobab": "^0.4.5",
     "cerebral-module-router": "^0.10.0",
     "cerebral-view-react": "^0.10.0",
