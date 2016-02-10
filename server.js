@@ -1,17 +1,52 @@
-var path = require('path');
-var express = require('express');
-var webpack = require('webpack');
-var webpackMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
-var config = require('./webpack.config.js');
+import path from 'path';
+import express from 'express';
+import webpack from 'webpack';
+import {ServerController} from 'cerebral';
+import {Container} from 'cerebral-view-react';
+import webpackMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import config from './webpack.config.js';
+import fs from 'fs';
+import {renderToString} from 'react-dom/server';
+import React from 'react';
+import ColorChanger from './app/components/ColorChanger';
 
-var isDeveloping = process.env.NODE_ENV !== 'production';
-var port = isDeveloping ? 3000 : process.env.PORT;
-var app = express();
+const isDeveloping = process.env.NODE_ENV !== 'production';
+const port = isDeveloping ? 3000 : process.env.PORT;
+const app = express();
+
+const bootstrap = function (path, index) {
+  const state = {
+    example: {
+      title: 'You can change the url too!',
+      color: path.substr(1)
+    }
+  };
+  const controller = ServerController(state);
+
+  return index
+    .replace('${BOOTSTRAP}', JSON.stringify(state))
+    .replace('${APP}',
+      renderToString(
+        React.createElement(Container, {
+          controller: controller
+        }, React.createElement(ColorChanger))
+      )
+    );
+};
+
+app.get('/favicon.ico', (req, res) => {
+  res.status(404);
+  res.send();
+});
+
+app.get('/', (req, res) => {
+  res.redirect('/green');
+});
 
 if (isDeveloping) {
-  var compiler = webpack(config);
-  var middleware = webpackMiddleware(compiler, {
+  const compiler = webpack(config);
+  const middleware = webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
     contentBase: 'src',
     stats: {
@@ -26,18 +61,18 @@ if (isDeveloping) {
 
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
-  app.get('*', function response(req, res) {
-    res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
-    res.end();
+  app.get('*', (req, res) => {
+    res.type('html');
+    res.send(bootstrap(req.path, middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')).toString()));
   });
 } else {
-  app.use(express.static(__dirname + '/dist'));
-  app.get('*', function response(req, res) {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+  app.get('*', (req, res) => {
+    res.type('html');
+    res.send(bootstrap(req.path, fs.readFileSync(path.join(__dirname, 'dist/index.html')).toString()));
   });
 }
 
-app.listen(port, '0.0.0.0', function onStart(err) {
+app.listen(port, '0.0.0.0', (err) => {
   if (err) {
     console.log(err);
   }
