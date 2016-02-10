@@ -4,12 +4,12 @@ import rootRouted from './signals/rootRouted';
 export default (options = {}) => {
   return (module, controller) => {
 
-    module.state({
+    module.addState({
       title: 'You can change the url too!',
       color: '#333'
     });
 
-    module.signals({
+    module.addSignals({
       rootRouted,
       colorChanged
     });

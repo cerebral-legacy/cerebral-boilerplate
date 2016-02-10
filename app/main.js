@@ -10,7 +10,7 @@ import ColorChanger from './components/ColorChanger';
 
 const controller = Controller(Model({}));
 
-controller.modules({
+controller.addModules({
   example: Example(),
 
   devtools: Devtools(),
