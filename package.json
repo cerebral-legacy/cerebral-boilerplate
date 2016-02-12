@@ -20,10 +20,12 @@
   },
   "homepage": "https://github.com/cerebral/cerebral-boilerplate",
   "scripts": {
+    "prestart": "npm run build",
     "start": "node server_build",
     "server": "webpack --config webpack.server.config.js --watch",
-    "build_client": "rimraf dist && NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
-    "build_server": "NODE_ENV=production webpack --config ./webpack.server.production.config.js --progress --profile --colors"
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "rimraf dist && NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
+    "build:server": "NODE_ENV=production webpack --config ./webpack.server.production.config.js --progress --profile --colors"
   },
   "dependencies": {
     "baobab": "^2.3.3",
