@@ -31,7 +31,7 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+      loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]")
     }, {
       test: /\.js?$/,
       exclude: /node_modules/,
