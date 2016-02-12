@@ -31,7 +31,7 @@
     "cerebral-addons": "^0.4.9",
     "cerebral-model-baobab": "^0.4.7",
     "cerebral-module-devtools": "^0.5.3",
-    "cerebral-module-router": "^0.12.4",
+    "cerebral-module-router": "^0.12.5",
     "cerebral-view-react": "^0.11.6",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"

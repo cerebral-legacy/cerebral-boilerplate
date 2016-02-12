@@ -16,6 +16,8 @@ controller.addModules({
   devtools: Devtools(),
   router: Router({
     '/:color': 'example.colorChanged'
+  }, {
+    preventAutostart: true
   })
 });
 
