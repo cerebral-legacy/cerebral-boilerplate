@@ -30,9 +30,6 @@ module.exports = {
           ["transform-decorators-legacy"]
         ]
       }
-    }, {
-      test: /\.css?$/,
-      loader: 'css-loader/locals'
     }]
   }
 };

@@ -2,7 +2,6 @@
 
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -28,13 +27,12 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('development')
       }
-    }),
-    new ExtractTextPlugin("styles.css")
+    })
   ],
   module: {
     loaders: [{
-      test: /\.css$/,
-      loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]")
+      test: /\.css?$/,
+      loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
     },
     {
       test: /\.js?$/,

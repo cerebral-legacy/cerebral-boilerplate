@@ -7,41 +7,14 @@ import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from './webpack.config.js';
 import fs from 'fs';
-import {renderToString} from 'react-dom/server';
-import React from 'react';
-import ColorChanger from './app/components/ColorChanger';
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 const app = express();
 
-const bootstrap = function (path, index) {
-  const state = {
-    example: {
-      title: 'You can change the url too!',
-      color: path.substr(1)
-    }
-  };
-  const controller = ServerController(state);
-
-  return index
-    .replace('${BOOTSTRAP}', JSON.stringify(state))
-    .replace('${APP}',
-      renderToString(
-        React.createElement(Container, {
-          controller: controller
-        }, React.createElement(ColorChanger))
-      )
-    );
-};
-
 app.get('/favicon.ico', (req, res) => {
   res.status(404);
   res.send();
-});
-
-app.get('/', (req, res) => {
-  res.redirect('/green');
 });
 
 if (isDeveloping) {
@@ -63,12 +36,12 @@ if (isDeveloping) {
   app.use(webpackHotMiddleware(compiler));
   app.get('*', (req, res) => {
     res.type('html');
-    res.send(bootstrap(req.path, middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')).toString()));
+    res.send(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')).toString());
   });
 } else {
   app.get('*', (req, res) => {
     res.type('html');
-    res.send(bootstrap(req.path, fs.readFileSync(path.join(__dirname, 'dist/index.html')).toString()));
+    res.send(fs.readFileSync(path.join(__dirname, 'dist/index.html')).toString());
   });
 }
 

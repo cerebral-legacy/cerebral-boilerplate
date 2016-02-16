@@ -1,7 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 var StatsPlugin = require('stats-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -25,13 +24,12 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
-    new ExtractTextPlugin("styles.css")
+    })
   ],
   module: {
     loaders: [{
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]")
+      loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
     }, {
       test: /\.js?$/,
       exclude: /node_modules/,
