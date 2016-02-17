@@ -36,12 +36,12 @@ if (isDeveloping) {
   app.use(webpackHotMiddleware(compiler));
   app.get('*', (req, res) => {
     res.type('html');
-    res.send(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')).toString());
+    res.send(middleware.fileSystem.readFileSync(path.resolve('dist', 'index.html')).toString());
   });
 } else {
   app.get('*', (req, res) => {
     res.type('html');
-    res.send(fs.readFileSync(path.join(__dirname, 'dist/index.html')).toString());
+    res.send(fs.readFileSync(path.resolve('dist', 'index.html')).toString());
   });
 }
 
