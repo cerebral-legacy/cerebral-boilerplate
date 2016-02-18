@@ -5,6 +5,9 @@
 
 or **ZIP it** :-)
 
+## Requirements
+You need **NPM v3** and **NODE v5**.
+
 ## Run
 1. `npm install`
 2. `npm start`
