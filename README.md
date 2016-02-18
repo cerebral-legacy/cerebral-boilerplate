@@ -9,6 +9,11 @@ or **ZIP it** :-)
 1. `npm install`
 2. `npm start`
 
+## Build for production
+`npm run build`
+
+Creates a dist folder with the bundle
+
 ## Overview
 
 ### React by default
