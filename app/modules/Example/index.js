@@ -1,4 +1,5 @@
 import colorChanged from './signals/colorChanged';
+import redirectRoot from './signals/redirectRoot';
 
 export default (options = {}) => {
   return (module, controller) => {
@@ -9,7 +10,8 @@ export default (options = {}) => {
     });
 
     module.addSignals({
-      colorChanged
+      colorChanged,
+      redirectRoot
     });
 
   };

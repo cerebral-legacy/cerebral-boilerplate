@@ -15,7 +15,10 @@ controller.addModules({
 
   devtools: Devtools(),
   router: Router({
+    '/': 'example.redirectRoot',
     '/:color': 'example.colorChanged'
+  }, {
+    onlyHash: true
   })
 });
 
