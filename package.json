@@ -21,7 +21,7 @@
   "homepage": "https://github.com/cerebral/cerebral-boilerplate",
   "scripts": {
     "start": "cross-env kotatsu serve app/main.js --index app/index.html --config webpack.config.js --devtool eval-source-map",
-    "build": "cross-env kotatsu build client app/main.js --config webpack.config.js --minify -o dist "
+    "build": "cross-env NODE_ENV=production kotatsu build client app/main.js --config webpack.production.config.js --minify -o dist "
   },
   "dependencies": {
     "baobab": "^2.3.3",

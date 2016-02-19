@@ -15,7 +15,7 @@ You need **NPM v3** and **NODE v5**.
 ## Build for production
 `npm run build`
 
-Creates a dist folder with the bundle
+Creates a dist folder with the bundle. This bundle can be used with any .html file. Make sure you run it from an actual server, like Node, Nginx etc. You can test with `python -m SimpleHTTPServer 3000` in the folder where you have your .html file and bundle.
 
 ## Overview
 
