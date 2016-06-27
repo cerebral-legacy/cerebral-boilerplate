@@ -14,12 +14,16 @@ controller.addModules({
   example: Example(),
 
   devtools: Devtools(),
-  router: Router({
+  router: Router(
+    {
     '/': 'example.redirectRoot',
     '/:color': 'example.colorChanged'
-  }, {
-    onlyHash: true
-  })
+    }
+    // Uncomment next 3 lines for hash-based routing for older browsers
+    // ,{
+    // onlyHash: true
+    // }
+  )
 });
 
 ReactDOM.render(<Container controller={controller}><ColorChanger /></Container>, document.getElementById('root'));
